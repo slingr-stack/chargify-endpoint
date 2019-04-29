@@ -1,0 +1,171 @@
+{
+    "label": "Chargify",
+    "name": "chargify",
+    "apiVersion": "v1",
+    "internal": true,
+    "configurationType": "GLOBAL",
+    "deployment": {
+        "profiles":[
+            {
+                "name": "default",
+                "label": "Default",
+                "memory": 256,
+                "description": "Default configuration"
+            }
+        ],
+        "allowMultipleInstances": false
+    },
+    "icon48": "https://storage.googleapis.com/static.slingrs.io/platform/endpoints/chargify.png",
+    "status": "ACTIVE",
+    "stores": [],
+    "events": [
+        {
+            "label": "Webhook",
+            "name": "webhook",
+            "description": "You can see the list of events here: https://help.chargify.com/webhooks/webhooks-reference.html"
+        }
+    ],
+    "functions": [
+        {
+            "label": "Create customer",
+            "name": "createCustomer",
+            "description": "Creates a new customer on Chargify."
+        },
+        {
+            "label": "Update customer",
+            "name": "updateCustomer",
+            "description": "Updates an existent customer on Chargify."
+        },
+        {
+            "label": "Find customer by id",
+            "name": "findCustomerById",
+            "description": "Find a customer using its id on application."
+        },
+        {
+            "label": "Find customer by Chargify id",
+            "name": "findCustomerByChargifyId",
+            "description": "Find a customer using its Chargify id."
+        },
+        {
+            "label": "Remove customer",
+            "name": "removeCustomer",
+            "description": "Remove a customer from Chargify."
+        },
+        {
+            "label": "Create payment profile",
+            "name": "createPaymentProfile",
+            "description": "Creates a new payment profile on Chargify."
+        },
+        {
+            "label": "Update payment profile",
+            "name": "updatePaymentProfile",
+            "description": "Updates an existent payment profile on Chargify."
+        },
+        {
+            "label": "Create subscription",
+            "name": "createSubscription",
+            "description": "Creates a new subscription on Chargify."
+        },
+        {
+            "label": "Update subscription",
+            "name": "updateSubscription",
+            "description": "Updates an existent subscription on Chargify."
+        },
+        {
+            "label": "Cancel subscription",
+            "name": "cancelSubscription",
+            "description": "Cancels a subscription on Chargify."
+        },
+        {
+            "label": "Calculate Self-Service page URL",
+            "name": "calculateSelfServiceUrl",
+            "description": "Generates the Self-Service page URL using the given subscription id. This function is enabled if the 'Site Shared key' is configured."
+        },
+        {
+            "label": "Get stats",
+            "name": "getStats"
+        },
+        {
+            "label": "GET",
+            "name": "get",
+            "description": "Sends a GET request"
+        },
+        {
+            "label": "POST",
+            "name": "post",
+            "description": "Sends a POST request"
+        },
+        {
+            "label": "PUT",
+            "name": "put",
+            "description": "Sends a PUT request"
+        },
+        {
+            "label": "PATCH",
+            "name": "patch",
+            "description": "Sends a PATCH request"
+        },
+        {
+            "label": "DELETE",
+            "name": "delete",
+            "description": "Sends a DELETE request"
+        },
+        {
+            "label": "HEAD",
+            "name": "head",
+            "description": "Sends a HEAD request"
+        },
+        {
+            "label": "OPTIONS",
+            "name": "options",
+            "description": "Sends a OPTIONS request"
+        }
+    ],
+    "configuration":[
+        {
+            "name": "subdomain",
+            "label": "Subdomain",
+            "description": "Chargify provides you with unique subdomain",
+            "type": "text",
+            "required": true
+        },
+        {
+            "name": "subdomainLabel",
+            "type": "label",
+            "visibility": "@config.subdomain",
+            "value": "'https://'+config.subdomain+'.chargify.com'"
+        },
+        {
+            "name": "apiKey",
+            "label": "Api key",
+            "description": "Chargify provides you an unique API Key to be configured",
+            "type": "text",
+            "required": true
+        },
+        {
+            "name": "siteSharedKey",
+            "label": "Site Shared key",
+            "description": "Your Site's 'Shared Key' is a value that only you and Chargify know. It is used to generate unguessable URLs for the pages hosted by Chargify that your customers may interact with pages like Self-Service Pages. This is used by the 'calculateSelfServiceUrl' function.",
+            "type": "text",
+            "required": false
+        },
+        {
+            "name": "webhook",
+            "label": "Webhook URL",
+            "type": "label",
+            "value": "@config.WEBHOOK_URL"
+        },
+        {
+            "name": "config",
+            "label": "Events",
+            "value": "In order to listen to Chargify events you will need to configure a webhook on Chargify:<ul><li>Access to the 'Settings' page, 'Webhooks' tab.</li><li>Enable 'Send Webhooks to my Webhook URL(s)'.</li><li>Push 'Add URL', copy the value of 'Webhook URL' in this form and save.</li><li>Push 'Configure', enable the following 'Webhook Subscriptions' and save:<ul><li>Signup Success</li><li>Signup Failure</li><li>Subscription State Change</li><li>Expiring Card</li><li>Customer Update</li></ul></li></ul>",
+            "type": "info"
+        },
+        {
+            "name": "config2",
+            "label": "Self-Service Pages URLs",
+            "value": "In order to enable the 'calculateSelfServiceUrl' function (used to generate the Self-Service Pages URLs) you will need to configure the 'Site Shared key' field:<ul><li>Access to the 'Settings' page, 'Self-Service Page URLs' tab.</li><li>Copy the value of 'Site Shared Key' in this form and save.</li></ul>",
+            "type": "info"
+        }
+    ]
+}
