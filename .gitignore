@@ -2,4 +2,5 @@ target/
 *.iml
 .idea/
 endpoint_proxy.properties
+endpoint_local.properties
 /bin/
